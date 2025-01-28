@@ -17,8 +17,8 @@ class CarMake(models.Model):
 class Car(models.Model):
     make = models.ForeignKey(CarMake, on_delete=models.CASCADE)
     model = models.CharField(max_length=255)
-    year = models.PositiveIntegerField()  # Изменено на PositiveIntegerField
-    color = models.CharField(max_length=20, choices=[(color.name, color.value) for color in Color])  # max_length увеличен
+    year = models.PositiveIntegerField()
+    color = models.CharField(max_length=20, choices=[(color.name, color.value) for color in Color])
 
     def __str__(self):
-        return f"{self.year} {self.make} {self.model} {self.color}"  # Можно добавить пробелы
+        return f"{self.year} {self.make} {self.model} {self.color}"
