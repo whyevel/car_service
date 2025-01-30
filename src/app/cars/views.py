@@ -1,9 +1,8 @@
-# /src/app/cars/views.py
-from rest_framework import generics
+from rest_framework import generics, status, viewsets
+from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
-from rest_framework import status
-from .models import Car, CarMake
-from .serializers import CarSerializer, CarMakeSerializer
+from .models import Car, CarMake, Customer
+from .serializers import CarSerializer, CarMakeSerializer, CustomerSerializer
 from django.http import HttpResponse
 
 def home_view(request):
@@ -38,3 +37,12 @@ class CarMakeListCreate(generics.ListCreateAPIView):
             self.perform_create(serializer)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+class CustomerViewSet(viewsets.ModelViewSet):
+    queryset = Customer.objects.all()
+    serializer_class = CustomerSerializer
+    permission_classes = [AllowAny]
+
+class CarViewSet(viewsets.ModelViewSet):
+    queryset = Car.objects.all()
+    serializer_class = CarSerializer
