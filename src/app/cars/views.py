@@ -3,10 +3,14 @@ from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from .models import Car, CarMake, Customer
 from .serializers import CarSerializer, CarMakeSerializer, CustomerSerializer
-from django.http import HttpResponse
+#from django.http import HttpResponse
+from django.shortcuts import render
 
-def home_view(request):
-    return HttpResponse("Welcome to the Car Service!")
+
+#def home_view(request):
+    #return HttpResponse("Welcome to the Car Service!")
+def home(request):
+    return render(request, 'home.html')
 
 class CarListCreate(generics.ListCreateAPIView):
     queryset = Car.objects.all()
