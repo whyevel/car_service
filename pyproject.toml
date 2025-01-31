@@ -1,0 +1,21 @@
+[project]
+name = "car-service"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "whyevel",email = "whyevel@gmail.com"}
+]
+readme = "README.md"
+requires-python = ">=3.10,<3.11"
+dependencies = [
+    "asgiref (==3.8.1)",
+    "django (==5.1.5)",
+    "sqlparse (==0.5.3)",
+    "tzdata (==2025.1)",
+    "djangorestframework (>=3.15.2,<4.0.0)"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
