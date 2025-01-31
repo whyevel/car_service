@@ -1,12 +1,11 @@
-""" Запуск тестов:  python manage.py test src.app.cars """
+"""Запуск тестов:  python manage.py test src.app.cars"""
 
-from django.test import TestCase
-from app.cars.models import Car, Customer, CarMake, Color
+from app.cars.models import Car, CarMake, Customer
 from django.core.exceptions import ValidationError
+from django.test import TestCase
 
 
 class CarModelTest(TestCase):
-
     def setUp(self):
         self.make = CarMake.objects.create(name="Toyota")
         self.customer = Customer.objects.create(name="Ivan Ivanov", phone="79031234567")
@@ -18,7 +17,7 @@ class CarModelTest(TestCase):
             model="Camry",
             year=2020,
             color="red",
-            customer=self.customer
+            customer=self.customer,
         )
         self.assertEqual(car.model, "Camry")
         self.assertEqual(car.year, 2020)
@@ -33,7 +32,7 @@ class CarModelTest(TestCase):
                 model="Corolla",
                 year=-2020,  # Неверный год
                 color="blue",
-                customer=self.customer
+                customer=self.customer,
             )
             car.full_clean()
 
@@ -45,7 +44,7 @@ class CarModelTest(TestCase):
                 model="RAV4",
                 year=2022,
                 color="purple",  # Некорректный цвет
-                customer=self.customer
+                customer=self.customer,
             )
             car.full_clean()
 
@@ -56,13 +55,12 @@ class CarModelTest(TestCase):
             model="Highlander",
             year=2021,
             color="white",
-            customer=self.customer
+            customer=self.customer,
         )
         self.assertEqual(car.customer.name, "Ivan Ivanov")
 
 
 class CustomerModelTest(TestCase):
-
     def test_create_customer(self):
         """Тест на создание клиента"""
         customer = Customer.objects.create(name="Alexey Petrov", phone="79161234567")
