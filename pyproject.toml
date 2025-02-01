@@ -3,7 +3,7 @@ name = "car-service"
 version = "0.1.0"
 description = ""
 authors = [
-    {name = "whyevel",email = "whyevel@gmail.com"}
+    {name = "whyevel", email = "whyevel@gmail.com"}
 ]
 readme = "README.md"
 requires-python = ">=3.10,<3.11"
@@ -12,9 +12,16 @@ dependencies = [
     "django (==5.1.5)",
     "sqlparse (==0.5.3)",
     "tzdata (==2025.1)",
-    "djangorestframework (>=3.15.2,<4.0.0)"
+    "djangorestframework (>=3.15.2,<4.0.0)",
+    "pytest (>=8.3.4,<9.0.0)",
+    "ruff (>=0.9.4,<0.10.0)"
 ]
 
+[tool.pytest.ini_options]
+DJANGO_SETTINGS_MODULE = "src.settings"
+python_files = ["test_*.py"]
+django_find_project = true
+addopts = "--tb=short"
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
@@ -23,6 +30,7 @@ build-backend = "poetry.core.masonry.api"
 [tool.poetry.group.dev.dependencies]
 ruff = "^0.9.4"
 pre-commit = "^4.1.0"
+pytest-django = "^4.9.0"
 
 [tool.ruff]
 line-length = 88
@@ -36,4 +44,3 @@ ignore = ["E501"]
 [tool.ruff.format]
 quote-style = "double"
 indent-style = "space"
-

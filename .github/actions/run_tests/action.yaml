@@ -1,0 +1,38 @@
+name: "Run Django Tests"
+description: "Run pytest for Django application"
+
+runs:
+  using: "composite"
+  steps:
+    - name: Set up Python 3.10
+      uses: actions/setup-python@v4
+      with:
+        python-version: "3.10"
+
+    - name: Verify Python installation
+      run: |
+        which python
+        python --version
+      shell: bash
+
+    - name: Set PYTHONPATH
+      run: echo "PYTHONPATH=$GITHUB_WORKSPACE/src" >> $GITHUB_ENV
+      shell: bash
+
+    - name: Install Poetry
+      run: |
+        curl -sSL https://install.python-poetry.org | python3 -
+        echo "$HOME/.local/bin" >> $GITHUB_PATH
+      shell: bash
+
+    - name: Verify Poetry installation
+      run: poetry --version
+      shell: bash
+
+    - name: Install dependencies
+      run: poetry install --no-interaction --no-root
+      shell: bash
+
+    - name: Run tests
+      run: poetry run pytest
+      shell: bash
