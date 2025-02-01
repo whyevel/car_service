@@ -51,3 +51,4 @@ jobs:
           file: ops/Dockerfile
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/car_service:latest
+

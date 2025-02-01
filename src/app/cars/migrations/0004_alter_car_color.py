@@ -4,15 +4,23 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('cars', '0003_rename_customers_customer'),
+        ("cars", "0003_rename_customers_customer"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='car',
-            name='color',
-            field=models.CharField(choices=[('red', 'red'), ('blue', 'blue'), ('green', 'green'), ('black', 'black'), ('white', 'white')], max_length=20),
+            model_name="car",
+            name="color",
+            field=models.CharField(
+                choices=[
+                    ("red", "red"),
+                    ("blue", "blue"),
+                    ("green", "green"),
+                    ("black", "black"),
+                    ("white", "white"),
+                ],
+                max_length=20,
+            ),
         ),
     ]
