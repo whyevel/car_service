@@ -29,7 +29,7 @@ class Customer(models.Model):
 class Car(models.Model):
     make = models.ForeignKey(CarMake, on_delete=models.CASCADE)
     model = models.CharField(max_length=255)
-    year = models.PositiveIntegerField()
+    year = models.IntegerField()
     color = models.CharField(
         max_length=20, choices=[(color.value, color.value) for color in Color]
     )
