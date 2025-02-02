@@ -36,3 +36,4 @@ runs:
     - name: Run tests
       run: poetry run pytest
       shell: bash
+
