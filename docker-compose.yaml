@@ -17,6 +17,8 @@ services:
     build:
       context: .
       dockerfile: ops/Dockerfile
+    environment:
+      DB_PASSWORD: car_service_password
     ports:
       - "8000:8000"
     depends_on:

@@ -20,5 +20,4 @@ ENV PYTHONPATH="/car_service/src"
 
 EXPOSE 8000
 
-# Указываем путь к manage.py в корне проекта
 CMD ["poetry", "run", "python", "manage.py", "runserver", "0.0.0.0:8000"]
